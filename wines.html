@@ -3,53 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the exquisite wines crafted by Strataridakis Bros Winery.">
     <title>Our Wines - Strataridakis Bros Winery</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
+        body { font-family: 'Lora', serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .nav-link:hover { transition: color 0.3s ease-in-out; }
-        .wine-card { transition: transform 0.3s ease-in-out; }
-        .wine-card:hover { transform: scale(1.05); }
+        .wine-card { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+        .wine-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2); }
+        .animate-slide-in { animation: slideIn 1s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-black text-white">
     <!-- Navigation Bar -->
-    <nav class="bg-red-900 text-white p-4 sticky top-0 shadow-lg z-10">
+    <nav class="bg-red-950 text-white p-4 sticky top-0 shadow-lg z-10">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Strataridakis Bros Winery</h1>
+            <h1 class="text-3xl font-bold">Strataridakis Bros Winery</h1>
             <ul class="flex space-x-6">
-                <li><a href="index.html" class="nav-link hover:text-gray-300">Home</a></li>
-                <li><a href="about.html" class="nav-link hover:text-gray-300">About Us</a></li>
-                <li><a href="wines.html" class="nav-link hover:text-gray-300">Our Wines</a></li>
-                <li><a href="where.html" class="nav-link hover:text-gray-300">Where to Find Us</a></li>
-                <li><a href="contact.html" class="nav-link hover:text-gray-300">Contact Us</a></li>
+                <li><a href="index.html" class="nav-link hover:text-red-300">Home</a></li>
+                <li><a href="about.html" class="nav-link hover:text-red-300">About Us</a></li>
+                <li><a href="wines.html" class="nav-link hover:text-red-300">Our Wines</a></li>
+                <li><a href="where.html" class="nav-link hover:text-red-300">Where to Find Us</a></li>
+                <li><a href="contact.html" class="nav-link hover:text-red-300">Contact Us</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Wines Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-8 animate-fade-in">Our Wines</h2>
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4 animate-slide-in">
+            <h2 class="text-5xl font-bold text-center mb-12 text-red-950">Our Wines</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="wine-card bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-2">Red Blend</h3>
-                    <p class="text-gray-600">A rich, full-bodied red with notes of dark fruit and spice.</p>
+                <div class="wine-card bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1597905297539-370316077b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Red Blend" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                    <h3 class="text-2xl font-semibold mb-2 text-red-950">Red Blend</h3>
+                    <p class="text-gray-300">A rich, full-bodied red with notes of dark fruit and spice.</p>
                 </div>
-                <div class="wine-card bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-2">Chardonnay</h3>
-                    <p class="text-gray-600">A crisp, refreshing white with hints of citrus and oak.</p>
+                <div class="wine-card bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd1dd341?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Chardonnay" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                    <h3 class="text-2xl font-semibold mb-2 text-red-950">Chardonnay</h3>
+                    <p class="text-gray-300">A crisp, refreshing white with hints of citrus and oak.</p>
                 </div>
-                <div class="wine-card bg-gray-100 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-2">Rosé</h3>
-                    <p class="text-gray-600">A delicate, fruity rosé perfect for any occasion.</p>
+                <div class="wine-card bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1568213816046-0ee1c42bd559?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Rosé" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                    <h3 class="text-2xl font-semibold mb-2 text-red-950">Rosé</h3>
+                    <p class="text-gray-300">A delicate, fruity rosé perfect for any occasion.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-red-900 text-white p-4">
+    <footer class="bg-red-950 text-white p-6">
         <div class="container mx-auto text-center">
             <p>© 2025 Strataridakis Bros Winery. All rights reserved.</p>
         </div>
