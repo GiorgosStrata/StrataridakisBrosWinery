@@ -11,17 +11,23 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Lora', serif; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .animate-slide-in { animation: slideIn 1s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-slide-in { animation: slideIn 1.2s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .menu-toggle:hover { cursor: pointer; }
-        .menu-overlay { transition: opacity 0.3s ease-in-out; }
-        .menu-link:hover { color: #e5e7eb; transition: color 0.3s ease-in-out; }
+        .menu-overlay { transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; }
+        .menu-overlay.hidden { opacity: 0; transform: translateY(-20px); }
+        .menu-link { transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; }
+        .menu-link:hover { transform: translateX(10px); color: #e5e7eb; }
+        .hamburger div { transition: all 0.3s ease-in-out; }
+        .hamburger.open .bar1 { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.open .bar2 { opacity: 0; }
+        .hamburger.open .bar3 { transform: rotate(-45deg) translate(7px, -7px); }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
     <!-- Age Verification Modal -->
-    <div id="ageModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
-        <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
+    <div id="ageModal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center animate-slide-in">
             <h2 class="text-2xl font-bold mb-4 text-gray-100">Are you over 18?</h2>
             <p class="mb-6 text-gray-200">You must be over 18 to enter this site.</p>
             <button onclick="closeModal()" class="bg-gray-200 text-gray-900 px-6 py-2 rounded-full hover:bg-gray-100 transition duration-300 mr-4">Yes</button>
@@ -33,22 +39,22 @@
     <header class="bg-gray-800 p-4 sticky top-0 z-40">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-3xl font-bold text-gray-100">Strataridakis Bros Winery</h1>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <div class="w-8 h-1 bg-gray-200 mb-1"></div>
-                <div class="w-8 h-1 bg-gray-200 mb-1"></div>
-                <div class="w-8 h-1 bg-gray-200"></div>
+            <div class="menu-toggle hamburger" onclick="toggleMenu()">
+                <div class="bar1 w-8 h-1 bg-gray-200 mb-1"></div>
+                <div class="bar2 w-8 h-1 bg-gray-200 mb-1"></div>
+                <div class="bar3 w-8 h-1 bg-gray-200"></div>
             </div>
         </div>
     </header>
 
     <!-- Menu Overlay -->
-    <div id="menuOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-95 hidden flex items-center justify-center z-30">
-        <ul class="text-center space-y-6">
-            <li><a href="index.html" class="menu-link text-2xl text-gray-200 hover:text-gray-100">Home</a></li>
-            <li><a href="about.html" class="menu-link text-2xl text-gray-200 hover:text-gray-100">About Us</a></li>
-            <li><a href="wines.html" class="menu-link text-2xl text-gray-200 hover:text-gray-100">Our Wines</a></li>
-            <li><a href="where.html" class="menu-link text-2xl text-gray-200 hover:text-gray-100">Where to Find Us</a></li>
-            <li><a href="contact.html" class="menu-link text-2xl text-gray-200 hover:text-gray-100">Contact Us</a></li>
+    <div id="menuOverlay" class="menu-overlay fixed inset-0 bg-gray-900 bg-opacity-95 hidden flex items-center justify-center z-30">
+        <ul class="text-center space-y-8">
+            <li><a href="index.html" class="menu-link text-3xl text-gray-200 hover:text-gray-100">Home</a></li>
+            <li><a href="about.html" class="menu-link text-3xl text-gray-200 hover:text-gray-100">About Us</a></li>
+            <li><a href="wines.html" class="menu-link text-3xl text-gray-200 hover:text-gray-100">Our Wines</a></li>
+            <li><a href="where.html" class="menu-link text-3xl text-gray-200 hover:text-gray-100">Where to Find Us</a></li>
+            <li><a href="contact.html" class="menu-link text-3xl text-gray-200 hover:text-gray-100">Contact Us</a></li>
         </ul>
     </div>
 
@@ -80,16 +86,25 @@
     </footer>
 
     <script>
-        // Age Modal
+        // Age Modal: Show only once per session
+        window.onload = function() {
+            if (!sessionStorage.getItem('ageVerified')) {
+                document.getElementById('ageModal').classList.remove('hidden');
+            }
+        };
+
         function closeModal() {
-            document.getElementById('ageModal').style.display = 'none';
+            sessionStorage.setItem('ageVerified', 'true');
+            document.getElementById('ageModal').classList.add('hidden');
         }
 
         // Hamburger Menu
         function toggleMenu() {
             const menu = document.getElementById('menuOverlay');
+            const hamburger = document.querySelector('.hamburger');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
+            hamburger.classList.toggle('open');
         }
 
         // Close menu when a link is clicked
@@ -97,6 +112,7 @@
             link.addEventListener('click', () => {
                 document.getElementById('menuOverlay').classList.add('hidden');
                 document.getElementById('menuOverlay').classList.remove('flex');
+                document.querySelector('.hamburger').classList.remove('open');
             });
         });
     </script>
