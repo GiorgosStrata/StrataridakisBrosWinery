@@ -3,57 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Strataridakis Bros Winery, crafting exceptional wines in [Your Region].">
     <title>Strataridakis Bros Winery</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
+        body { font-family: 'Lora', serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .nav-link:hover { transition: color 0.3s ease-in-out; }
+        .animate-slide-in { animation: slideIn 1s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-black text-white">
     <!-- Navigation Bar -->
-    <nav class="bg-red-900 text-white p-4 sticky top-0 shadow-lg z-10">
+    <nav class="bg-red-950 text-white p-4 sticky top-0 shadow-lg z-10">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Strataridakis Bros Winery</h1>
+            <h1 class="text-3xl font-bold">Strataridakis Bros Winery</h1>
             <ul class="flex space-x-6">
-                <li><a href="index.html" class="nav-link hover:text-gray-300">Home</a></li>
-                <li><a href="about.html" class="nav-link hover:text-gray-300">About Us</a></li>
-                <li><a href="wines.html" class="nav-link hover:text-gray-300">Our Wines</a></li>
-                <li><a href="where.html" class="nav-link hover:text-gray-300">Where to Find Us</a></li>
-                <li><a href="contact.html" class="nav-link hover:text-gray-300">Contact Us</a></li>
+                <li><a href="index.html" class="nav-link hover:text-red-300">Home</a></li>
+                <li><a href="about.html" class="nav-link hover:text-red-300">About Us</a></li>
+                <li><a href="wines.html" class="nav-link hover:text-red-300">Our Wines</a></li>
+                <li><a href="where.html" class="nav-link hover:text-red-300">Where to Find Us</a></li>
+                <li><a href="contact.html" class="nav-link hover:text-red-300">Contact Us</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1519677582822-0148588e2d2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')">
-        <div class="text-center bg-opacity-50 bg-black p-8 rounded-lg">
-            <h2 class="text-5xl font-bold mb-4 animate-fade-in">Welcome to Strataridakis Bros Winery</h2>
-            <p class="text-xl">Crafting exceptional wines with tradition and passion since [Year].</p>
-            <a href="wines.html" class="mt-6 inline-block bg-red-900 text-white px-6 py-3 rounded-full hover:bg-red-800 transition duration-300">Explore Our Wines</a>
+        <div class="text-center bg-black bg-opacity-60 p-10 rounded-lg animate-slide-in">
+            <h2 class="text-6xl font-bold mb-6">Strataridakis Bros Winery</h2>
+            <p class="text-2xl mb-8">Crafting exceptional wines with tradition and passion since [Year].</p>
+            <a href="wines.html" class="inline-block bg-red-950 text-white px-8 py-4 rounded-full hover:bg-red-800 transition duration-300 text-lg">Explore Our Wines</a>
         </div>
     </section>
 
     <!-- Intro Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6">Our Legacy</h2>
-            <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4 text-center animate-slide-in">
+            <h2 class="text-4xl font-bold mb-6 text-red-950">Our Legacy</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
                 Strataridakis Bros Winery is a family-owned estate dedicated to producing world-class wines. Nestled in [Your Region], our passion for winemaking shines through in every bottle.
             </p>
-            <a href="about.html" class="mt-4 inline-block text-red-900 hover:underline">Learn More About Us</a>
+            <a href="about.html" class="mt-6 inline-block text-red-300 hover:text-red-400 transition duration-300">Learn More About Us</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-red-900 text-white p-4">
+    <footer class="bg-red-950 text-white p-6">
         <div class="container mx-auto text-center">
             <p>© 2025 Strataridakis Bros Winery. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links (if any remain in future updates)
+        // Smooth scrolling for anchor links (if needed in future)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
