@@ -32,8 +32,8 @@
         <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center animate-slide-in">
             <h2 class="text-2xl font-bold mb-4 text-gray-100">Are you over 18?</h2>
             <p class="mb-6 text-gray-200">You must be over 18 to enter this site.</p>
-            <button onclick="closeModal()" class="bg-gray-200 text-gray-900 px-6 py-2 rounded-full hover:bg-gray-100 transition duration-300 mr-4">Yes</button>
-            <button onclick="window.location.href='exit.html'" class="bg-gray-600 text-gray-200 px-6 py-2 rounded-full hover:bg-gray-500 transition duration-300">No</button>
+            <button id="ageYes" class="bg-gray-200 text-gray-900 px-6 py-2 rounded-full hover:bg-gray-100 transition duration-300 mr-4">Yes</button>
+            <button id="ageNo" class="bg-gray-600 text-gray-200 px-6 py-2 rounded-full hover:bg-gray-500 transition duration-300">No</button>
         </div>
     </div>
 
@@ -91,19 +91,8 @@
         </div>
     </footer>
 
+    <script src="age-verification.js"></script>
     <script>
-        // Age Modal: Show only once per session
-        window.onload = function() {
-            if (!sessionStorage.getItem('ageVerified')) {
-                document.getElementById('ageModal').classList.remove('hidden');
-            }
-        };
-
-        function closeModal() {
-            sessionStorage.setItem('ageVerified', 'true');
-            document.getElementById('ageModal').classList.add('hidden');
-        }
-
         // Hamburger Menu
         function toggleMenu() {
             const menu = document.getElementById('menuOverlay');
